@@ -62,7 +62,10 @@ class Chess:
     def handle_piece(self, piece):
         while True:
             try:
-                square = input('Where do you want to move ' + piece.piece_type + ' to? ')
+                square = input('Where do you want to move ' + piece.piece_type + ' to? *enter back to reselect piece ')
+                if square == 'back':
+                    piece = self.select_piece(piece.color)
+                    continue
                 col = square[0].upper()
                 row = int(square[1])
                 position = col_row_to_position(col, row)
