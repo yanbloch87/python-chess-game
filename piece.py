@@ -95,16 +95,14 @@ class Piece:
 
     def has_obstacle_in_diagonal(self, board, to_position):
         diff = to_position - self.position
-        if diff % 9 != 0 and diff % 7 != 0:
+        if 0 not in [diff % 7, diff % 9]:
             return False
 
         from_row = position_to_row(self.position)
         to_row = position_to_row(to_position)
         from_col = position_to_column(self.position)
         to_col = position_to_column(to_position)
-        addition = 0
-        if to_row > from_row and to_col > from_col:
-            addition = 9
+        addition = 9
         if to_row > from_row and to_col < from_col:
             addition = 7
         if to_row < from_row and to_col < from_col:
