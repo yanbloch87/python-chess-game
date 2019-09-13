@@ -98,7 +98,8 @@ class Chess:
                 continue
             for to_position in range(0, 64):
                 try:
-                    if piece.is_valid_move(self.board, to_position, True):
+                    if piece.is_valid_move(self.board, to_position, True)\
+                            and not piece.is_causing_checkmate(self.board, to_position):
                         has_valid_piece = True
                         break
                 except Exception:
